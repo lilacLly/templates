@@ -2,8 +2,6 @@
 
 using namespace std;
 
-const int N = 5005;
-
 class Hungarian {
 
   int max_node_cnt;
