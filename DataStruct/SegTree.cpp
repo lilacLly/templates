@@ -14,7 +14,8 @@ class SegTree {
         T mark, max_value;
         
         Node(int l, int r) : l(l), r(r) {
-            mark = max_value = 0;
+            mark = 0;
+            max_value = WORST;
         }
         
         bool cover(int ll, int rr) const {
@@ -69,7 +70,7 @@ class SegTree {
         pushUp(d);
     }
     
-    void update(int d, int l, int r, int v) {
+    void update(int d, int l, int r, T v) {
         Node *me = ns[d];
         if (me->cover(l, r)) {
             me->update(v);
@@ -99,11 +100,12 @@ class SegTree {
     
 public:
     
-    SegTree(int n) : n(n) {
-        ns.resize(n << 2);
+    SegTree(int n=1) {
+        build(n);
     }
     
-    void build() {
+    void build(int n) {
+        ns.resize(n << 2);
         build(1, 1, n);
     }
     
@@ -112,7 +114,7 @@ public:
     }
     
     T query(int l, int r) {
-        return query(l, r);
+        return query(1, l, r);
     }
 };
 
