@@ -5,7 +5,7 @@ using namespace std;
 const long double eps = 1e-11;
 
 inline bool is_zero(long double x) {
-  return x < eps;
+  return abs(x) < eps;
 }
 
 template <typename T>
